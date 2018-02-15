@@ -120,7 +120,7 @@ void setup()
 	lcd.begin( 16, 2 );
 	lcd.setCursor( 0, 0 );
 	//================================================================================================//
-	for ( int i = 0; i <= 3; i++ )
+	for ( int i = 0; i <= 2; i++ )
 	{
 		lcd.write( "Loading." );
 		delay( 375 );
@@ -133,9 +133,35 @@ void setup()
 		lcd.clear();
 	} //this for loop gives the arduino a little bit of time to tha Arduino so that it could be stable
 	//================================================================================================//
-	lcd.setCursor( 4, 0 );
-	lcd.write( "Welcome!" );
-	delay( 2000 );
+	lcd.setCursor( 0, 0 );
+	lcd.write( "by:Hossam AZZOUZ" );
+	lcd.setCursor( 0, 1 );
+	lcd.write( "& Ayoub DADANI" );
+	delay( 1000 );
+	lcd.clear();
+	lcd.setCursor( 0, 0 );
+	lcd.write( "& Ayoub DADANI" );
+	lcd.setCursor( 0, 1 );
+	lcd.write( "& Nouaamane" );
+	delay( 1000 );
+	lcd.clear();
+	lcd.setCursor( 0, 0 );
+	lcd.write( "& Nouaamane" );
+	lcd.setCursor( 0, 1 );
+	lcd.write( "AIT DAOUD" );
+	delay( 1000 );
+	lcd.clear();
+	lcd.setCursor( 0, 0 );
+	lcd.write( "AIT DAOUD" );
+	lcd.setCursor( 0, 1 );
+	lcd.write( "& Abderrahmane" );
+	delay( 1000 );
+	lcd.clear();
+	lcd.setCursor( 0, 0 );
+	lcd.write( "& Abderrahmane" );
+	lcd.setCursor( 0, 1 );
+	lcd.write( "DRIOUCH" );
+	delay( 1000 );
 	lcd.clear();
 	////////////////////////////////
 }
