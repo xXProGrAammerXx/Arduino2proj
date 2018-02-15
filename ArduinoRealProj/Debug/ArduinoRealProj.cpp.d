@@ -18,4 +18,4 @@ C:\Users\Alex\AppData\Local\Temp\VMBuilds\ArduinoRealProj\uno\Debug\ArduinoRealP
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Print.h \
  F:\scketch\ arduino\libraries\NewliquidCrystal/I2CIO.h \
  F:\scketch\ arduino\libraries\NewliquidCrystal/LCD.h \
- D:\Visual\ studio\Common7\IDE\Extensions\uie0jsbc.qs4\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h
+ C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\2017\Community\Common7\IDE\Extensions\pbd1usl1.2ll\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h

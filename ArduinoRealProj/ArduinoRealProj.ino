@@ -105,9 +105,9 @@ void setup()
 	pinMode( RGBbluePin, OUTPUT );
 	pinMode( RGBgreenPin, OUTPUT );
 	pinMode( RGBredPin, OUTPUT );
-	digitalWrite( RGBredPin, HIGH );
-	digitalWrite( RGBgreenPin, HIGH );
-	digitalWrite( RGBbluePin, HIGH );
+	digitalWrite( RGBredPin, LOW );
+	digitalWrite( RGBgreenPin, LOW );
+	digitalWrite( RGBbluePin, LOW );
 
 	pinMode( yellowPin, OUTPUT );
 	pinMode( bluePin, OUTPUT );
@@ -205,13 +205,13 @@ void loop()
 		//////LEDs Stuff/////////////////////////////////////
 		if ( forced == Forced::Neutral )
 		{
-			digitalWrite( RGBredPin, HIGH );
-			digitalWrite( RGBgreenPin, LOW );
+			digitalWrite( RGBredPin, LOW );
+			digitalWrite( RGBgreenPin, HIGH );
 		}
 		else
 		{
-			digitalWrite( RGBgreenPin, HIGH );
-			digitalWrite( RGBredPin, LOW );
+			digitalWrite( RGBgreenPin, LOW );
+			digitalWrite( RGBredPin, HIGH );
 		}
 
 		if ( currentTime == DayNight::Day )
@@ -482,9 +482,9 @@ void loop()
 		lcd.clear();
 		writing = LCDwriting::None;
 		//shut down the RGB
-		digitalWrite( RGBredPin, HIGH );
-		digitalWrite( RGBgreenPin, HIGH );
-		digitalWrite( RGBbluePin, HIGH );
+		digitalWrite( RGBredPin, LOW );
+		digitalWrite( RGBgreenPin, LOW );
+		digitalWrite( RGBbluePin, LOW );
 		///////////////////
 		if ( yValue <= 100 )
 		{
