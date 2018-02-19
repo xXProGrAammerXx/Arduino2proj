@@ -20,7 +20,7 @@ Servo servo;
 int servoInitialPosition = 0;
 int servoOffset = 0;
 int servoPos = servoInitialPosition + servoOffset;
-bool didServoTurn = true; // true = Closed & false = Opened | I dont know why i didn't an enum class but it's too late now
+bool didServoTurn = true; // true = Closed & false = Opened | I dont know why i didn't do an enum class but it's too late now
 int turningSpeed = 5;
 /*--------------------------*/
 
@@ -28,6 +28,7 @@ int turningSpeed = 5;
 Servo servo2;
 int servo2Pos = 5;
 int turningSpeed2 = 5;
+bool howManyTurns = false;
 DayNight currentTime = DayNight::Day;
 Servo2Status servo2status = Servo2Status::Close;
 /*--------------------------*/
@@ -69,11 +70,11 @@ void setup()
 	pinMode( downReadPin, INPUT );
 	////////////////////////////////
 
-	///////Servo Stuff/////////////
+	///////Servo Stuff/////////////////////////////////////////////////////////////////////////
 	/*----------------------------------Servo 1 Stuff----------------------------------------*/
 	servo.attach( 3 );
 	//======================================================================================//
-	for ( servoPos = 5; servoPos >= 185; servoPos -= turningSpeed ) // goes from 185 degrees to 5 degrees
+	for ( servoPos = 5; servoPos <= 185; servoPos += turningSpeed ) // goes from 185 degrees to 5 degrees
 	{
 		servo.write( servoPos ); // tell servo to go to position in variable 'servoPos'
 		delay( 15 ); // waits 15ms for the servo to reach the position
@@ -91,7 +92,7 @@ void setup()
 	}
 	//======================================================================================//
 	/*--------------------------------------------------------------------------------------*/
-	///////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
 
 
 	////Analog JoyStick Stuff///////////
@@ -131,36 +132,36 @@ void setup()
 		lcd.write( "Loading..." );
 		delay( 375 );
 		lcd.clear();
-	} //this for loop gives the arduino a little bit of time to tha Arduino so that it could be stable
+	} //this "for" loop gives the arduino a little bit of time to tha Arduino so that it could be stable
 	//================================================================================================//
 	lcd.setCursor( 0, 0 );
-	lcd.write( "by:Hossam AZZOUZ" );
+	lcd.write( "   by: Hossam   " );
 	lcd.setCursor( 0, 1 );
-	lcd.write( "& Ayoub DADANI" );
+	lcd.write( "     AZZOUZ     " );
 	delay( 1000 );
 	lcd.clear();
 	lcd.setCursor( 0, 0 );
-	lcd.write( "& Ayoub DADANI" );
+	lcd.write( "     &Ayoub     " );
 	lcd.setCursor( 0, 1 );
-	lcd.write( "& Nouaamane" );
+	lcd.write( "     DADANI     " );
 	delay( 1000 );
 	lcd.clear();
 	lcd.setCursor( 0, 0 );
-	lcd.write( "& Nouaamane" );
+	lcd.write( "   &Nouaamane   " );
 	lcd.setCursor( 0, 1 );
-	lcd.write( "AIT DAOUD" );
+	lcd.write( "   AIT DAOUD    " );
 	delay( 1000 );
 	lcd.clear();
 	lcd.setCursor( 0, 0 );
-	lcd.write( "AIT DAOUD" );
+	lcd.write( " & Abderrahmane " );
 	lcd.setCursor( 0, 1 );
-	lcd.write( "& Abderrahmane" );
+	lcd.write( "   DRIOUCH    " );
 	delay( 1000 );
 	lcd.clear();
 	lcd.setCursor( 0, 0 );
-	lcd.write( "& Abderrahmane" );
+	lcd.write( "    &Yassine    " );
 	lcd.setCursor( 0, 1 );
-	lcd.write( "DRIOUCH" );
+	lcd.write( "  Boulaalamat   " );
 	delay( 1000 );
 	lcd.clear();
 	////////////////////////////////
@@ -398,16 +399,15 @@ void loop()
 				lcd.write( "M1 : Opened (F)" );
 			}
 			/*------------------------------------------------------------------------------*/
-
+		
 			lcd.setCursor( 0, 1 );
 			lcd.write( "M2 : Closing" );
-
 			for ( servo2Pos = 5; servo2Pos <= 185; servo2Pos += turningSpeed2 )
 			{ // goes from 5 degrees to 185 degrees in steps of 1 degree 
 				servo2.write( servo2Pos ); // tell servo to go to position in variable 'servo2Pos'
 				delay( 15 ); // waits 15ms for the servo to reach the position
 			}
-
+		
 			lcd.clear();
 
 			servo2status = Servo2Status::Close;
@@ -435,16 +435,22 @@ void loop()
 				lcd.write( "M1 : Opened (F)" );
 			}
 			/*------------------------------------------------------------------------------*/
-
-			lcd.setCursor( 0, 1 );
-			lcd.write( "M2 : Opening" );
-
-			for ( servo2Pos = 185; servo2Pos >= 5; servo2Pos -= turningSpeed2 ) // goes from 185 degrees to 5 degrees
+			if ( howManyTurns == false )
 			{
-				servo2.write( servo2Pos ); // tell servo to go to position in variable 'servoPos'
-				delay( 15 ); // waits 15ms for the servo to reach the position
+				lcd.setCursor( 0, 1 );
+				lcd.write( "M2 : Opening" );
+				for ( servo2Pos = 185; servo2Pos >= 5; servo2Pos -= turningSpeed2 ) // goes from 185 degrees to 5 degrees
+				{
+					servo2.write( servo2Pos ); // tell servo to go to position in variable 'servoPos'
+					delay( 15 ); // waits 15ms for the servo to reach the position
+				}
+				howManyTurns = true;
+				servo2status = Servo2Status::Open;
 			}
-			servo2status = Servo2Status::Open;
+			if ( currentTime == DayNight::Day )
+			{
+				howManyTurns = false;
+			}
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////
 
