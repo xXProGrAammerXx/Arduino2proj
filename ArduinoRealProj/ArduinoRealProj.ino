@@ -376,6 +376,11 @@ void loop()
 			}
 		}
 
+		if ( currentTime == DayNight::Day )
+		{
+			howManyTurns = false;
+		}
+
 		if ( currentTime == DayNight::Day && servo2status == Servo2Status::Open )
 		{
 			lcd.clear();
@@ -447,11 +452,45 @@ void loop()
 				howManyTurns = true;
 				servo2status = Servo2Status::Open;
 			}
-			if ( currentTime == DayNight::Day )
+		}
+		if ( howManyTurns == true && currentTime == DayNight::Night )
+		{
+			if ( waterLBDL == false )
 			{
-				howManyTurns = false;
+				lcd.clear();
+				lcd.setCursor( 0, 0 );
+
+				/*------------------------------------------------------------------------------*/
+				if ( didServoTurn == true && forced == Forced::Neutral )
+				{
+					lcd.write( "M1 : Closed" );
+				}
+				else if ( didServoTurn == false && forced == Forced::Neutral )
+				{
+					lcd.write( "M1 : Opened" );
+				}
+				else if ( forced == Forced::Close )
+				{
+					lcd.write( "M1 : Closed (F)" );
+				}
+				else if ( forced == Forced::Open )
+				{
+					lcd.write( "M1 : Opened (F)" );
+				}
+				/*------------------------------------------------------------------------------*/
+
+				lcd.setCursor( 0, 1 );
+				lcd.write( "M2 : Closing" );
+				for ( servo2Pos = 5; servo2Pos <= 185; servo2Pos += turningSpeed2 )
+				{ // goes from 5 degrees to 185 degrees in steps of 1 degree 
+					servo2.write( servo2Pos ); // tell servo to go to position in variable 'servo2Pos'
+					delay( 15 ); // waits 15ms for the servo to reach the position
+				}
+				lcd.clear();
+				servo2status = Servo2Status::Close;
 			}
 		}
+
 		//////////////////////////////////////////////////////////////////////////////////////////////
 
 		///////////////LCD Stuff//////////////////////////////////////////////////////////////////////////////////
