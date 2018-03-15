@@ -7,7 +7,7 @@ int readPin = A0;
 int value;
 bool waterLBL = false;
 /*-----------------------*/
-int offSet = 300;
+int offSet = 100;
 /*----------------------*/
 int downReadPin = A3;
 int downValue;
@@ -567,5 +567,8 @@ void loop()
 	}
 
 	/*<DEBUG>*/
+	int valueVVV = value;
+	bool wlbl = waterLBL;
+	bool wlbul = waterLBDL;
 	/*</DUBUG>*/
 }

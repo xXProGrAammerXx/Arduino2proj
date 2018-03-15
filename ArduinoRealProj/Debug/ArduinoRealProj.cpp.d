@@ -17,5 +17,4 @@ C:\Users\Alex\AppData\Local\Temp\VMBuilds\ArduinoRealProj\uno\Debug\ArduinoRealP
  F:\scketch\ arduino\libraries\NewliquidCrystal/LiquidCrystal_I2C.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Print.h \
  F:\scketch\ arduino\libraries\NewliquidCrystal/I2CIO.h \
- F:\scketch\ arduino\libraries\NewliquidCrystal/LCD.h \
- C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\2017\Community\Common7\IDE\Extensions\pbd1usl1.2ll\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h
+ F:\scketch\ arduino\libraries\NewliquidCrystal/LCD.h
